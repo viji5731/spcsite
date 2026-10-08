@@ -89,6 +89,7 @@
     box-sizing: border-box;
 }
 
+
 html,
 body {
     height: 100%;
@@ -1026,6 +1027,7 @@ header.scrolled {
 .about-text {
     flex: 1;
     min-width: 300px;
+    order: 2;
 }
 
 .about-text h3 {
@@ -1035,16 +1037,28 @@ header.scrolled {
 }
 
 .about-text p {
-    font-size: 1rem;
-    color: #555;
+    margin: 0;
+
+    padding: 25px 28px;
+
+    border: 1px solid #dfe4ea;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    font-size: 16px;
+    color: #53627a;
     text-align: justify;
-    line-height: 1.7;
+    line-height: 1.75;
+
+    box-sizing: border-box;
 }
 
 .about-image {
     flex: 1;
     min-width: 250px;
     height: auto;
+    order: 1;
 }
 
 .about-image img {
@@ -1058,7 +1072,119 @@ header.scrolled {
 .about-image img:hover {
     transform: scale(1.15);
 }
+/* ========================================================= 
+   ABOUT CONTENT BOX 
+   SPC + ABOUT + PARAGRAPH INSIDE SAME BOX 
+========================================================= */ 
+ 
+.about-item .about-content-box { 
+    width: 100%; 
+    padding: 50px; 
+    border: 1px solid #dfe4ea; 
+    border-radius: 20px; 
+    background: #ffffff; 
+    box-sizing: border-box; 
+} 
+ 
+.about-item .about-content-box .about-badge-title { 
+    margin-bottom: 20px; 
+} 
+ 
+.about-item .about-content-box .about-heading { 
+    margin: 0 0 20px 0; 
+    padding: 0; 
+    font-size: 2.4rem; 
+    line-height: 1.1; 
+    font-weight: 700; 
+    color: #102f59; 
+} 
+ 
+.about-item .about-content-box p { 
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+    border: none; 
+    background: transparent; 
+    font-size: 16px; 
+    color: #53627a; 
+    line-height: 1.75; 
+    text-align: justify; 
+    box-sizing: border-box; 
+}
+/* SPC BADGE */
+.about-item .about-content-box .about-badge-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
 
+    padding: 12px 20px;
+
+    background: #fff4dc;
+    border-radius: 30px;
+
+    color: #d99a00;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+/* STAR */
+.about-item .about-content-box .about-badge-title span {
+    font-size: 16px;
+    color: #f2a900;
+    line-height: 1;
+}
+/* =========================================================
+   ABOUT SECTION SCROLL ANIMATION
+========================================================= */
+
+/* IMAGE INITIAL STATE */
+.about-item .about-image {
+    opacity: 0;
+    transform: translateX(70px);
+    transition: opacity 0.9s ease,
+                transform 0.9s ease;
+}
+
+/* IMAGE WHEN VISIBLE */
+.about-item.about-visible .about-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* CONTENT INITIAL STATE */
+.about-item .about-text {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.9s ease 0.15s,
+                transform 0.9s ease 0.15s;
+}
+
+/* CONTENT WHEN VISIBLE */
+.about-item.about-visible .about-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .about-item {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .about-item .about-image,
+    .about-item .about-text {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
 /* Responsive */
 @media (max-width: 768px) {
     .about-item {
@@ -1449,114 +1575,789 @@ header.scrolled {
         padding: 28px 24px;
     }
 }
-
-/* Why Choose Us Section */
-.why-choose-us {
-    padding: 80px 20px;
-    background: #f7faff;
-    text-align: center;
+/* =========================================================
+   WHY CHOOSE US SECTION
+========================================================= */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 145px;
 }
 
-.section-header {
-    max-width: 800px;
-    margin: 0 auto 50px;
+#why-us {
+    scroll-margin-top: 145px;
+}
+.spc-why-section {
+    position: relative;
+    width: 100%;
+    padding: 15px 0 10px;
+    background: #f6faff;
+    overflow: visible;
 }
 
-.section-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #1a2a4f;
+/* CONTAINER */
+.spc-why-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding:  0;
 }
 
-.section-header p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-}
+/* =========================================================
+   MAIN AREA
+========================================================= */
 
-/* Stats Grid */
-.stats-grid {
+.spc-why-main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 20px;
+
+    /* IMPORTANT */
+    min-height: 390px;
+    height: auto;
 }
 
-.stat-box {
-    background: #fff;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.spc-why-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateX(-80px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
 }
 
-.stat-box:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+.spc-why-section.spc-why-visible
+.spc-why-content {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.stat-box i {
-    font-size: 2rem;
-    color: var(--accent);
+/* SMALL TITLE */
+
+.spc-why-small-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #163b67;
+    margin-bottom: 14px;
+}
+
+.spc-why-small-title span {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: #1598ed;
+}
+
+/* MAIN TITLE */
+
+.spc-why-title {
+    margin: 0 0 18px;
+    font-size: 38px;
+    line-height: 1.05;
+    font-weight: 800;
+    color: #102f59;
+    letter-spacing: -1.5px;
     margin-bottom: 12px;
 }
 
-.stat-box h3 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 8px;
+.spc-why-title strong {
+    display: block;
+    color: #1497ee;
+    font-weight: 800;
 }
 
-.stat-box p {
-    font-size: 0.95rem;
-    color: #555;
+/* DESCRIPTION */
+
+.spc-why-description {
+    max-width: 500px;
+    margin: 0 0 20px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #536b88;
+    text-align: left;
+    margin-bottom: 15px;
 }
 
-/* Certifications Row */
-.certifications {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
+/* BUTTON */
+
+.spc-why-button {
+    display: inline-flex;
     align-items: center;
+    gap: 15px;
+    padding: 11px 23px;
+    border-radius: 30px;
+    background: #1598ed;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
-.certifications img {
-    height: 70px;
+.spc-why-button span {
+    font-size: 21px;
+    transition: transform 0.3s ease;
+}
+
+.spc-why-button:hover {
+    color: #fff;
+    background: #087ed0;
+    transform: translateY(-3px);
+    box-shadow:
+        0 10px 25px rgba(21, 152, 237, 0.25);
+}
+
+.spc-why-button:hover span {
+    transform: translateX(5px);
+}
+
+/* =========================================================
+   IMAGE AREA
+========================================================= */
+
+.spc-why-image-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    margin-left: auto;
+
+    opacity: 0;
+    transform: translateX(80px) scale(0.96);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.22,.61,.36,1);
+}
+
+.spc-why-section.spc-why-visible
+.spc-why-image-wrap {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+}
+
+/* BLUE BORDER */
+
+.spc-why-image-border {
+    position: absolute;
+    left: -18px;
+    top: 20px;
+    width: calc(100% + 5px);
+    height: calc(100% - 10px);
+    border: 2px solid #1598ed;
+    border-radius: 22px;
+    z-index: 0;
+}
+
+/* IMAGE */
+
+.spc-why-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 315px;
+    object-fit: cover;
+    border-radius: 20px;
+    z-index: 1;
+
+    box-shadow:
+        0 20px 45px rgba(20, 60, 100, 0.16);
+}
+
+/* =========================================================
+   EXPERIENCE BOX
+========================================================= */
+
+.spc-why-experience {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 195px;
+    padding: 14px 18px;
+
+    background: #fff;
+    border-radius: 15px;
+
+    z-index: 3;
+
+    box-shadow:
+        0 12px 35px rgba(20, 50, 80, 0.14);
+
+    animation: spcExperienceFloat 4s ease-in-out infinite;
+}
+
+@keyframes spcExperienceFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.spc-why-experience-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #ff963b;
+    color: #fff;
+    font-size: 21px;
+}
+
+.spc-why-experience h3 {
+    margin: 0;
+    font-size: 27px;
+    line-height: 1;
+    color: #123761;
+    font-weight: 800;
+}
+
+.spc-why-experience p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: #123761;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   NEXT CERTIFICATE / TRUST SECTION
+========================================================= */
+
+.spc-why-section + section {
+    margin-top: 0 !important;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .spc-why-section {
+        padding: 20px 0 10px;
+    }
+
+    .spc-why-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .spc-why-title {
+        font-size: 40px;
+    }
+
+    .spc-why-image {
+        height: 285px;
+    }
+
+    .spc-why-experience {
+        right: -15px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .spc-why-section {
+        padding: 35px 0 25px;
+    }
+
+    .spc-why-container {
+        padding: 0 18px;
+    }
+
+    .spc-why-main {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .spc-why-content {
+        text-align: center;
+    }
+
+    .spc-why-small-title {
+        justify-content: center;
+    }
+
+    .spc-why-title {
+        font-size: 38px;
+    }
+
+    .spc-why-description {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .spc-why-image-wrap {
+        max-width: 100%;
+    }
+
+    .spc-why-image {
+        height: 280px;
+    }
+
+    .spc-why-experience {
+        right: 10px;
+        top: 15px;
+    }
+}
+
+/* =========================================================
+   CERTIFICATIONS SECTION
+========================================================= */
+
+
+.spc-cert-section {
+    position: relative;
+
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+
+    margin-top: 45px;
+
+    padding: 18px 30px 70px;
+
+    
+    background: linear-gradient(
+        to bottom,
+        #174a7a 0,
+        #174a7a 95px,
+        #f6faff 95px,
+        #f6faff 100%
+    );
+
+    border-radius: 0;
+
+    opacity: 0;
+    transform: translateY(50px);
+
+    transition:
+        opacity 0.9s ease 0.25s,
+        transform 0.9s ease 0.25s;
+
+    overflow: visible;
+}
+
+
+.spc-why-section.spc-why-visible
+.spc-cert-section {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.spc-why-section.spc-why-visible
+.spc-cert-section {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* CERTIFICATE HEADING */
+
+.spc-cert-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+
+.spc-cert-heading span {
+
+    width: 75px;
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.7);
+}
+
+
+.spc-cert-heading h3 {
+
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+}
+
+
+/* CERTIFICATE GRID */
+/* =========================================================
+   CERTIFICATE GRID
+========================================================= */
+
+.spc-cert-grid {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 22px;
+
+    max-width: 1200px;
+
+    margin: 25px auto 0;
+
+    z-index: 5;
+    margin-top: 15px;
+}
+
+/* CERTIFICATE CARD */
+.spc-cert-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    min-height: 105px;
+
+    padding: 15px 18px;
+
+    background: #fff;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.08);
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.spc-why-section.spc-why-visible
+.spc-cert-card {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* STAGGER EFFECT */
+
+.spc-why-section.spc-why-visible
+.spc-cert-card:nth-child(1) {
+    transition-delay: 0.35s;
+}
+
+.spc-why-section.spc-why-visible
+.spc-cert-card:nth-child(2) {
+    transition-delay: 0.45s;
+}
+
+.spc-why-section.spc-why-visible
+.spc-cert-card:nth-child(3) {
+    transition-delay: 0.55s;
+}
+
+.spc-why-section.spc-why-visible
+.spc-cert-card:nth-child(4) {
+    transition-delay: 0.65s;
+}
+
+
+.spc-cert-card:hover {
+
+    transform: translateY(-6px) !important;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.13);
+}
+
+
+/* CERT IMAGE */
+
+.spc-cert-image {
+
+    width: 85px;
+    height: 75px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.spc-cert-image img {
+
+    width: 100%;
+    height: 100%;
+
     object-fit: contain;
-    /* filter: grayscale(100%); */
-    transition: filter 0.3s ease;
 }
 
-.certifications img:hover {
-    filter: grayscale(0);
+
+/* CERT CONTENT */
+
+.spc-cert-content h4 {
+
+    margin: 0 0 6px;
+
+    font-size: 15px;
+
+    color: #173a62;
+
+    font-weight: 700;
+}
+
+
+.spc-cert-content p {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    color: #6d7f94;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .spc-why-main {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        text-align: center;
+    }
+
+
+    .spc-why-content {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .spc-why-description {
+
+        text-align: center;
+
+        max-width: 700px;
+    }
+
+
+    .spc-why-image-wrap {
+
+        margin: 0 auto;
+    }
+
+
+    .spc-cert-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .spc-why-section {
+
+        padding-top: 60px;
+    }
+
+
+    .spc-why-container {
+
+     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    }
+
+
+    .spc-why-title {
+
+        font-size: 39px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .spc-why-description {
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    .spc-why-image {
+
+        height: 260px;
+
+        border-radius: 15px;
+    }
+
+
+    .spc-why-image-border {
+
+        left: -10px;
+
+        top: 15px;
+
+        border-radius: 17px;
+    }
+
+
+    .spc-why-experience {
+
+        right: -5px;
+
+        top: 15px;
+
+        min-width: 175px;
+
+        padding: 12px 14px;
+    }
+
+
+    .spc-why-experience-icon {
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 17px;
+    }
+
+
+    .spc-why-experience h3 {
+
+        font-size: 23px;
+    }
+
+
+    .spc-why-experience p {
+
+        font-size: 11px;
+    }
+
+
+    .spc-cert-section {
+
+        margin-top: 40px;
+
+        padding:
+            25px 15px 25px;
+    }
+
+
+    .spc-cert-heading {
+
+        gap: 10px;
+    }
+
+
+    .spc-cert-heading span {
+
+        width: 30px;
+    }
+
+
+    .spc-cert-heading h3 {
+
+        font-size: 10px;
+
+        letter-spacing: 1px;
+    }
+
+
+    .spc-cert-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    .spc-cert-card {
+
+        min-height: 90px;
+    }
+
 }
 
 /* Section Base */
-/* Section */
-.product-categories {
-    padding: 80px 0px !important;
-    background: rgb(224 236 251 / 25%);
-    text-align: center;
-}
+/* =========================================================
+   PRODUCT CATEGORIES
+========================================================= */
 
-.p20padding {
-    padding: 40px 20px 20px 40px;
-}
-
-.section-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #222;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Grid */
 .product-categories {
     padding: 80px 0 100px 0;
     background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
@@ -1570,61 +2371,164 @@ header.scrolled {
     font-family: 'Playfair Display', serif;
 }
 
+
+/* =========================================================
+   CATEGORY GRID
+   6 columns = each card takes 2 columns
+   Result:
+   3 cards per row
+========================================================= */
+
 .categories-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
     gap: 20px;
+
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+    padding: 0 20px;
+
+    box-sizing: border-box;
     overflow: visible;
+
+    justify-content: center;
+    align-items: stretch;
 }
 
-/* Card */
+
+/* =========================================================
+   CATEGORY LINK
+========================================================= */
+
+.category-link {
+    display: block;
+    grid-column: span 2;
+
+    width: 100%;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   5 CATEGORIES ONLY
+   First 3 = top row
+   Last 2 = centered
+========================================================= */
+
+.category-link:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.category-link:nth-child(5) {
+    grid-column: 4 / span 2;
+}
+
+
+/* =========================================================
+   CATEGORY CARD
+========================================================= */
+
 .category-card {
     position: relative;
-    height: 240px;
+
+    width: 100%;
+    height: 400px;
+
     border-radius: 20px;
     overflow: hidden;
+
     background-size: cover;
     background-position: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    transition: all 0.4s cubic-bezier(
+        0.175,
+        0.885,
+        0.32,
+        1.275
+    );
+
     cursor: pointer;
+
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+
     z-index: 1;
 }
 
-/* Overlay */
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
 .category-card .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        transparent 100%
+    );
+
     transition: all 0.4s ease;
 }
 
-/* Title */
+
+/* =========================================================
+   TITLE
+========================================================= */
+
 .category-card h3 {
     position: absolute;
+
     bottom: 0;
     left: 0;
     right: 0;
+
     color: #fff;
+
     font-size: 1.25rem;
     font-weight: 600;
+
     text-align: center;
+
     z-index: 2;
+
     padding: 25px 20px;
     margin: 0;
+
     transform: translateY(10px);
+
     transition: all 0.4s ease;
+
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+
+/* =========================================================
+   HOVER
+========================================================= */
+
 .category-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 50px rgba(3, 105, 161, 0.2);
+
+    box-shadow:
+        0 20px 50px rgba(3, 105, 161, 0.2);
+
     z-index: 10;
 }
 
 .category-card:hover .overlay {
-    background: linear-gradient(to top, rgba(3, 105, 161, 0.9) 0%, rgba(3, 105, 161, 0.3) 50%, rgba(3, 105, 161, 0.1) 100%);
+    background: linear-gradient(
+        to top,
+        rgba(3, 105, 161, 0.9) 0%,
+        rgba(3, 105, 161, 0.3) 50%,
+        rgba(3, 105, 161, 0.1) 100%
+    );
 }
 
 .category-card:hover h3 {
@@ -1633,43 +2537,106 @@ header.scrolled {
 }
 
 
-/* Responsive */
-@media (max-width: 1200px) {
+/* =========================================================
+   LAPTOP
+   IMPORTANT:
+   Keep 6-column structure.
+   Do NOT change to 3 columns here.
+========================================================= */
+
+@media (max-width: 1200px) and (min-width: 769px) {
+
     .categories-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        max-width: 1150px;
+        gap: 18px;
+        padding: 0 15px;
+    }
+
+    .category-card {
+        height: 360px;
     }
 }
 
-@media (max-width: 992px) {
-    .categories-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
-@media (max-width: 600px) {
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
     .categories-grid {
         grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        max-width: 600px;
+
+        padding: 0 20px;
+    }
+
+    .category-link {
+        grid-column: auto !important;
+    }
+
+    .category-card {
+        height: 280px;
     }
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .product-categories {
+        padding: 60px 0 70px;
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+        gap: 18px;
+    }
+
+    .category-card {
+        height: 260px;
+    }
+
+    .category-card h3 {
+        font-size: 1.1rem;
+    }
+}
 /* Product Grid */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    margin: 20px;
+    display: flex;
+    gap: 25px;
+    margin: 20px 0;
+    padding: 0 25px 30px 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-/* Product Card */
 .product-card {
     position: relative;
+    flex: 0 0 390px;
+    width: 390px;
+    box-sizing: border-box;
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     overflow: hidden;
-
     transition: all 0.3s ease;
     animation: fadeInUp 0.8s ease both;
+}
+
+.product-grid::after {
+    content: "";
+    flex: 0 0 20px;
 }
 
 .product-card:hover {
@@ -1721,15 +2688,17 @@ header.scrolled {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    overflow: hidden;
 }
 
 .product-image img {
+    width: 70%;
     max-width: 100%;
-
+    height: auto;
+    object-fit: contain;
+    object-position: center;
     background-color: #f8f9fa;
     border-radius: 20px;
-    /* object-fit: contain; */
-    transition: transform 0.4s ease;
 }
 
 .product-card:hover .product-image img {
@@ -1854,7 +2823,7 @@ header.scrolled {
     }
 
     .category-card {
-        height: 0px;
+        height: 280px;
         /* reduce height */
     }
 
@@ -1931,7 +2900,7 @@ header.scrolled {
     }
 
     .category-card {
-        height: 180px;
+        height: 380px;
     }
 
     .category-card h3 {
@@ -2045,6 +3014,303 @@ header.scrolled {
     /* vertical center */
     /* or any height */
     /* optionally give width */
+}
+/* =====================================================
+   VISION / MISSION / VALUES SECTION
+   ===================================================== */
+
+.vmv-section {
+    width: 100%;
+    padding: 80px 30px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.vmv-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    align-items: start;
+    text-align: center;
+
+    column-gap: 60px;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+}
+
+
+/* =====================================================
+   COMMON ITEM
+   ===================================================== */
+
+.vmv-item {
+    text-align: center;
+
+    opacity: 0;
+
+    transition:
+        transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.9s ease;
+}
+
+
+/* =====================================================
+   INITIAL POSITIONS
+   ===================================================== */
+
+/* Vision comes from LEFT */
+
+.vmv-vision {
+    transform: translateX(-180px);
+}
+
+
+/* Mission comes with ZOOM */
+
+.vmv-mission {
+    transform: scale(0.65);
+}
+
+
+/* Values comes from RIGHT */
+
+.vmv-values {
+    transform: translateX(180px);
+}
+
+
+/* =====================================================
+   ACTIVE / VISIBLE STATE
+   ===================================================== */
+
+.vmv-item.vmv-show {
+    opacity: 1;
+}
+
+
+/* Vision final position */
+
+.vmv-vision.vmv-show {
+    transform: translateX(0);
+}
+
+
+/* Mission zoom */
+
+.vmv-mission.vmv-show {
+    transform: scale(1);
+}
+
+
+/* Values final position */
+
+.vmv-values.vmv-show {
+    transform: translateX(0);
+}
+
+
+/* =====================================================
+   ICON
+   ===================================================== */
+
+.vmv-icon {
+    width: 120px;
+    height: 120px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vmv-icon img {
+    width: 145px !important;
+    height: 145px !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain;
+    display: block;
+    transform: scale(1.2);
+}
+/* =====================================================
+   HEADING
+   ===================================================== */
+
+.vmv-item h3 {
+    margin: 0 0 18px;
+
+    font-size: 26px;
+    line-height: 1.3;
+
+    font-weight: 700;
+
+    color: #10257c;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+   ===================================================== */
+
+.vmv-item p {
+    width: 100%;
+    max-width: 450px;
+
+    margin: 0 auto;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    font-weight: 400;
+
+    color: #555;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   SMALL DELAY
+   ===================================================== */
+
+.vmv-vision.vmv-show {
+    transition-delay: 0.05s;
+}
+
+.vmv-mission.vmv-show {
+    transition-delay: 0.15s;
+}
+
+.vmv-values.vmv-show {
+    transition-delay: 0.25s;
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 992px) {
+
+    .vmv-section {
+        padding: 65px 25px;
+    }
+
+    .vmv-container {
+        column-gap: 25px;
+    }
+
+    .vmv-item h3 {
+        font-size: 23px;
+    }
+
+    .vmv-item p {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .vmv-icon {
+        width: 105px;
+        height: 105px;
+    }
+
+    .vmv-icon img {
+        width: 95px !important;
+        height: 95px !important;
+    }
+
+    .vmv-vision {
+        transform: translateX(-100px);
+    }
+
+    .vmv-values {
+        transform: translateX(100px);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .vmv-section {
+        padding: 55px 20px;
+    }
+
+    .vmv-container {
+        grid-template-columns: 1fr;
+
+        row-gap: 55px;
+
+        column-gap: 0;
+    }
+
+
+    /* Mobile animation */
+
+    .vmv-vision {
+        transform: translateX(-80px);
+    }
+
+    .vmv-values {
+        transform: translateX(80px);
+    }
+
+    .vmv-mission {
+        transform: scale(0.75);
+    }
+
+
+    .vmv-icon {
+        width: 110px;
+        height: 110px;
+
+        margin-bottom: 15px;
+    }
+
+    .vmv-icon img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    .vmv-item h3 {
+        font-size: 24px;
+
+        margin-bottom: 14px;
+    }
+
+    .vmv-item p {
+        max-width: 550px;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .vmv-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
 }
 
 /* View More Button */
@@ -3429,10 +4695,8 @@ header.scrolled {
     <section class="hero" id="home">
         <div class="hero-slider">
             <div class="hero-slide active hero-slide-right">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="{{ asset('assets/img/MVI_5417.MP4') }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <img src="{{ asset('assets/img/spc2.webp') }}" class="hero-video" width="1600" height="900"
+                    fetchpriority="high" alt="SPC injection moulding production floor">
                 <div class="hero-overlay"></div>
                 <div class="container hero-container-right">
                     <div class="hero-content hero-content-right">
@@ -3441,9 +4705,12 @@ header.scrolled {
                             <span class="hero-badge-text">Quality · Durability · Trust</span>
                             <span class="hero-badge-line"></span>
                         </div>
-                        <span class="hero-tag">01 — Raw Materials</span>
-                        <h1>Premium <span class="hero-accent">Polymer Preparation</span></h1>
-                        <p class="hero-sub">Engineered for <strong>Performance</strong>. Designed for <strong>Perfection</strong>.</p>
+                        <span class="hero-tag">Industrial Packaging Manufacturer</span>
+                        <h1>Plastic Containers &amp; Paint Pails <span class="hero-accent">Built for Business</span></h1>
+                        <p class="hero-sub">Durable packaging, custom branding and dependable bulk supply from Virudhunagar, Tamil Nadu.</p>
+                        <div class="hero-actions">
+                            <a href="{{ route('contact') }}" class="hero-btn hero-btn-primary">Request a Quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
                        
                         <ul class="hero-features">
                             <li><i class="fas fa-cube"></i><span>High Quality Materials</span></li>
@@ -3456,10 +4723,8 @@ header.scrolled {
                 </div>
             </div>
             <div class="hero-slide hero-slide-left">
-                <video muted loop playsinline class="hero-video">
-                    <source src="{{ asset('assets/img/MVI_5413.MP4') }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <img src="{{ asset('assets/img/screen02.png') }}" class="hero-video" width="1024" height="1024"
+                    loading="lazy" alt="Screen printing machine applying custom branding to plastic containers">
                 <div class="hero-overlay"></div>
                 <div class="container hero-container-left">
                     <div class="hero-content">
@@ -3469,8 +4734,11 @@ header.scrolled {
                             <span class="hero-badge-line"></span>
                         </div>
                         <span class="hero-tag">02 — Screen Printing</span>
-                        <h1>Screen <span class="hero-accent">Printing Machine</span></h1>
+                        <h2 class="hero-heading"><span style="color: #fff;">Precision</span> <span class="hero-accent">Screen Printing</span></h2>
                         <p class="hero-sub">Sharp <strong>Branding</strong>. Lasting <strong>Finish</strong>.</p>
+                        <div class="hero-actions">
+                            <a href="{{ route('contact') }}" class="hero-btn hero-btn-primary">Request a Quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
                        
                         <ul class="hero-features">
                             <li><i class="fas fa-cube"></i><span>High Quality Materials</span></li>
@@ -3483,10 +4751,8 @@ header.scrolled {
                 </div>
             </div>
             <div class="hero-slide hero-slide-right">
-                <video muted loop playsinline class="hero-video">
-                    <source src="{{ asset('assets/img/MVI_5411.MP4') }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <img src="{{ asset('assets/img/label2.png') }}" class="hero-video" width="1024" height="1024"
+                    loading="lazy" alt="Heat-transfer labelling line applying durable labels to plastic containers">
                 <div class="hero-overlay"></div>
                 <div class="container hero-container-right">
                     <div class="hero-content hero-content-right">
@@ -3496,8 +4762,11 @@ header.scrolled {
                             <span class="hero-badge-line"></span>
                         </div>
                         <span class="hero-tag">03 — Labelling</span>
-                        <h1>Heat Transfer <span class="hero-accent">Labelling </span></h1>
+                        <h2 class="hero-heading"> <span style="color: #fff;">Heat Transfer</span><span class="hero-accent" style="margin-left: 10px;">Labelling</span></h2>
                         <p class="hero-sub">Professional <strong>Labels</strong>. Premium <strong>Presentation</strong>.</p>
+                        <div class="hero-actions">
+                            <a href="{{ route('contact') }}" class="hero-btn hero-btn-primary">Request a Quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
                        
                         <ul class="hero-features">
                             <li><i class="fas fa-cube"></i><span>High Quality Materials</span></li>
@@ -3563,59 +4832,217 @@ header.scrolled {
             </div>
         </div>
     </section>
-    <section class="why-choose-us" id="why-us">
-        <div class="container">
+    <section class="vmv-section">
 
-            <!-- =========================
-             SECTION TITLE & DESCRIPTION
-        ============================== -->
-            <div class="section-header">
-                <h2 class="section-title">
-                    {{ isset($data) ? ($data->title ?? 'Why Leading Brands Choose Us') : 'Why Leading Brands Choose Us' }}
+    <div class="vmv-container">
+
+        <!-- Vision -->
+        <div class="vmv-item vmv-vision">
+
+            <div class="vmv-icon">
+                <img src="{{ asset('assets/img/vision.png') }}" alt="Vision">
+            </div>
+
+            <h3>Vision</h3>
+
+            <p>
+                To be the leader in the plastics packaging industry by providing
+                innovative end-to-end solutions that meet the evolving needs of
+                our esteemed customers.
+            </p>
+
+        </div>
+
+
+        <!-- Mission -->
+        <div class="vmv-item vmv-mission">
+
+            <div class="vmv-icon">
+                <img src="{{ asset('assets/img/mission.png') }}" alt="Mission">
+            </div>
+
+            <h3>Mission</h3>
+
+            <p>
+                To produce and deliver high-quality components on time, winning
+                customer loyalty through proactive engagement and exceptional
+                service.
+            </p>
+
+        </div>
+
+
+        <!-- Values -->
+        <div class="vmv-item vmv-values">
+
+            <div class="vmv-icon">
+                <img src="{{ asset('assets/img/values.png') }}" alt="Values">
+            </div>
+
+            <h3>Values</h3>
+
+            <p>
+                By implementing best practices and cutting-edge technology,
+                we drive constant innovation and progress.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+    
+   <section class="spc-why-section" id="why-us">
+
+    <div class="spc-why-container">
+
+        <!-- TOP CONTENT -->
+        <div class="spc-why-main">
+
+            <!-- LEFT CONTENT -->
+            <div class="spc-why-content">
+
+                <div class="spc-why-small-title">
+                    <span></span>
+                    TRUSTED MANUFACTURER
+                </div>
+
+                <h2 class="spc-why-title">
+                    Why Leading Brands
+                    <strong>Choose Us</strong>
                 </h2>
 
-                <p style="text-align: justify; text-justify: inter-word;">
-                    {!! isset($data) ? ($data->description ?? 'Welcome to our company. Please add content from admin panel.') : 'Welcome to our company. Please add content from admin panel.' !!}
+                <p class="spc-why-description">
+                    {!! isset($data)
+                        ? ($data->description ?? 'At Senthil Plastic Containers Pvt. Ltd., we are trusted by top brands nationwide for our high-quality plastic packaging and precision injection moulding solutions. With over two decades of expertise and a fully equipped, modern manufacturing facility, we ensure consistent, reliable, and defect-free plastic products for every application.')
+                        : 'At Senthil Plastic Containers Pvt. Ltd., we are trusted by top brands nationwide for our high-quality plastic packaging and precision injection moulding solutions. With over two decades of expertise and a fully equipped, modern manufacturing facility, we ensure consistent, reliable, and defect-free plastic products for every application.'
+                    !!}
                 </p>
+
+                <a href="#contact" class="spc-why-button">
+                    Learn More
+                    <span>→</span>
+                </a>
+
             </div>
 
-          
-            @isset($certificates)
-            <div class="certifications">
-                @foreach ($certificates as $cert)
-                <img src="{{ asset('storage/' . $cert->image) }}" alt="Certificate"
-                    style="height:90px;object-fit:contain;">
-                @endforeach
+
+            <!-- RIGHT IMAGE -->
+            <div class="spc-why-image-wrap">
+
+                <div class="spc-why-image-border"></div>
+
+                <img
+                    src="{{ asset('assets/img/why-choose02.png') }}"
+                    alt="Senthil Plastic Containers Manufacturing"
+                    class="spc-why-image"
+                >
+
+                <div class="spc-why-experience">
+                    <div class="spc-why-experience-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+
+                    <div>
+                        <h3>25+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+
             </div>
-            @endisset
 
         </div>
-    </section>
 
+
+        <!-- CERTIFICATIONS -->
+        <div class="spc-cert-section">
+
+            <div class="spc-cert-heading">
+
+                <span></span>
+
+                <h3>OUR CERTIFICATIONS & TRUST</h3>
+
+                <span></span>
+
+            </div>
+
+
+            <div class="spc-cert-grid">
+
+                @isset($certificates)
+
+                    @foreach ($certificates as $cert)
+
+                        <div class="spc-cert-card">
+
+                            <div class="spc-cert-image">
+                                <img
+                                    src="{{ asset('storage/' . $cert->image) }}"
+                                    alt="Certificate"
+                                >
+                            </div>
+
+                            <div class="spc-cert-content">
+                                <h4>Quality Certified</h4>
+                                <p>
+                                    Certified Quality Standards
+                                </p>
+                            </div>
+
+                        </div>
+
+                    @endforeach
+
+                @endisset
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
     <section class="about-commitments mt-4" id="about">
-        <div class="container">
-            <h2 class="section-title">{{ isset($about) ? ($about->title ?? 'About Us') : 'About Us' }}</h2>
+    <div class="container">
 
-            <div class="about-item">
-                <div class="about-text">
-                    @if (isset($about) && !empty($about->description))
-                    <p>{!! nl2br(e($about->description)) !!}</p>
-                    @else
-                    <p>No About content added yet. Please update it from the admin panel.</p>
-                    @endif
-                </div>
+        <div class="about-item">
 
-                <div class="about-image">
-                    @if (isset($about) && !empty($about->image))
-                    <img src="{{ asset($about->image) }}" alt="{{ isset($about) ? ($about->title ?? 'About Image') : 'About Image' }}">
-                    @else
-                    <img src="{{ asset('assets/img/default.jpg') }}" alt="Default About Image">
-                    @endif
-                </div>
+            <!-- LEFT : IMAGE -->
+            <div class="about-image">
+                @if (isset($about) && !empty($about->image))
+                    <img src="{{ asset($about->image) }}"
+                         alt="{{ isset($about) ? ($about->title ?? 'About Image') : 'About Image' }}">
+                @else
+                    <img src="{{ asset('assets/img/default.png') }}"
+                         alt="Default About Image">
+                @endif
             </div>
+
+   <!-- RIGHT : CONTENT -->
+<div class="about-text">
+
+    <div class="about-content-box">
+
+        <div class="about-badge-title">
+            <span>★</span> SPC
         </div>
-    </section>
+
+        <h2 class="about-heading">About</h2>
+
+        @if (isset($about) && !empty($about->description))
+            <p>{!! nl2br(e($about->description)) !!}</p>
+        @else
+            <p>No About content added yet. Please update it from the admin panel.</p>
+        @endif
+
+    </div>
+
+</div>
+
+    </div>
+</section>
     <section class="product-categories mt-4" id="products">
         <div class="container">
             <h2 class="section-title">Product Categories</h2>
@@ -3993,12 +5420,38 @@ header.scrolled {
                     <div class="footer-col">
                         <h4>spc</h4>
                         <p>Premium plastic containers designed for sustainability and elegance.</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                        
+<div class="social-links">
+
+    <!-- Facebook - Opens SPC Facebook Page -->
+    <a href="https://www.facebook.com/share/1LNkWnRzu6/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <!-- Twitter - No Link -->
+    <a href="#" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+    <!-- Instagram - Opens SPC Instagram Page -->
+    <a href="https://www.instagram.com/senthilplasticcontainerspvtltd?stkn=MTE1cnpiZ3ZmZDAzeQ=="
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- LinkedIn - No Link -->
+    <a href="#" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+</div>
+
+
                     </div>
                     <div class="footer-col">
                         <h4>Quick Links</h4>
@@ -4170,6 +5623,7 @@ header.scrolled {
         });
     });
     </script>
+    
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -4273,8 +5727,121 @@ header.scrolled {
         showSlide(0);
         startAutoSlide();
     });
-    </script>
+    document.addEventListener("DOMContentLoaded", function () {
 
+    const vmvSection = document.querySelector(".vmv-section");
+
+    if (!vmvSection) {
+        return;
+    }
+
+    const vmvItems = vmvSection.querySelectorAll(".vmv-item");
+
+
+    const vmvObserver = new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("vmv-show");
+
+                } else {
+
+                    /*
+                     * Remove this else block if you want
+                     * animation to happen only once.
+                     */
+
+                    entry.target.classList.remove("vmv-show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.25
+        }
+    );
+
+
+    vmvItems.forEach(function (item) {
+
+        vmvObserver.observe(item);
+
+    });
+
+});
+    </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const aboutItem = document.querySelector(".about-item");
+
+    if (!aboutItem) return;
+
+    const observer = new IntersectionObserver(function (entries) {
+
+        entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+                aboutItem.classList.add("about-visible");
+
+                observer.unobserve(aboutItem);
+
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+    observer.observe(aboutItem);
+
+});
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const whySection = document.querySelector(".spc-why-section");
+
+    if (!whySection) return;
+
+    const observer = new IntersectionObserver(
+
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    whySection.classList.add("spc-why-visible");
+
+                    observer.unobserve(whySection);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -40px 0px"
+        }
+
+    );
+
+    observer.observe(whySection);
+
+});
+
+</script>
     @include('partials.initial-loader-script')
 </body>
 
